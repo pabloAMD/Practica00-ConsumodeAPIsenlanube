@@ -1,0 +1,39 @@
+header{
+    background:#0097A7;
+    color:white;
+    text-align: center;
+}
+
+.contenedor{
+    background-image: url(https://miro.medium.com/max/798/0*hZVjtkEi1cBnGL9y.jpg);
+    margin-top: 5px ;
+    height: 300px;
+    filter: alpha(opacity=50);
+    opacity: .9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.buscador{
+    position: absolute;
+    text-align: center; 
+    width: 100%;
+}
+.buscador input{
+    height: 40px;
+    border-radius: 3px;
+    text-align: center;
+}
+body{
+    margin-left: 5px;
+    margin-left: 5px;
+}
+/*table tbody tr td{
+    display: flex;
+    background-color: rgb(27, 18, 66);
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+} */
