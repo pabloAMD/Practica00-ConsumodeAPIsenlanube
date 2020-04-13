@@ -14,10 +14,10 @@ function CargarDatos(page) {
             var data = JSON.parse(this.responseText)
             total = data.totalResults;
             data.Search.forEach(pelis => {
-                detalles += "<tr>" +
-
-                
-                    "<td> <img width='100' height='150'' src=" + pelis.Poster != "N/A" ? pelis.Poster :`imagen/Nimagen.jpg></td><td>${pelis.Title}</td><td>${pelis.Year}</td><td> <a href='#' onclick=\\"CargarInformacion('${pelis.imdbID}')\\">MORE</a></td></tr>`;
+                detalles += `<tr><td> <img width='100' height='150'' src=${ pelis.Poster != 'N/A' ? pelis.Poster :"imagen/Nimagen.jpg"}></td>
+                <td>${pelis.Title}</td>
+                <td>${pelis.Year}</td>
+                <td> <a href='#' onclick=\\"CargarInformacion('${pelis.imdbID}')\\">MORE</a></td></tr>`;
                 controlpagina();
 
             });
@@ -31,8 +31,8 @@ function CargarDatos(page) {
 
 var index = 3;
 function controlpagina() {
-    paginac = "<ul class='pagination'><li class='page-item disabled'><a  class='page-link' href='#'>Previous</a></li>" +
-        "<li class='page-item'><a onclick=\"CargarDatos(" + (index - 2) + "\"  class='page-link' href='#'>" + (index - 2) + "</a></li>" +
+    paginac = "<ul class='pagination'><li class='page-item'><a onclick=\"tcambio(-1)\"  class='page-link' href='#'>Previous</a></li>" +
+        "<li class='page-item'><a onclick=\"CargarDatos(" + (index - 2) + ")\"  class='page-link' href='#'>" + (index - 2) + "</a></li>" +
         "<li class='page-item'><a onclick=\"CargarDatos(" + (index - 1) + ")\"  class='page-link' href='#'>" + (index - 1) + "</a></li>" +
         "<li class='page-item'><a onclick=\"CargarDatos(" + (index) + ")\"  class='page-link' href='#'>" + (index) + "</a></li>" +
         "<li class='page-item'><a id='siguiente' onclick=\"tcambio(1)\" class='page-link' href='#'>Next</a></li></ul>";
@@ -42,16 +42,9 @@ var pagic = 30;
 
 function tcambio(num) {
     var n = "";
-    console.log(total)
-
-
     if (num == "1") {
         pagic = pagic + 30;
-        
-        console.log("paginas sumadas ", pagic)
-        
         if (pagic>total) {
-            console.log("fin")
             index = index + 3;
             console.log("final de finales",index);
             n = "<ul class='pagination'><li class='page-item '><a onclick=\"tcambio(-1)\" class='page-link' href='#'>Previous</a></li>" +
@@ -60,25 +53,25 @@ function tcambio(num) {
             "<li class='page-item'><a onclick=\"CargarDatos(" + (index) + ")\"  class='page-link' href='#'>" + (index) + "</a></li>" +
             "<li class='page-item disabled'><a id='siguiente'  class='page-link' href='#'>Next</a></li></ul>";
         } else {
-            
+            CargarDatos((index+1));
             n += "<ul class='pagination'><li class='page-item'><a onclick=\"tcambio(-1)\" class='page-link' href='#'>Previous</a></li>" +
                 "<li class='page-item'><a onclick=\"CargarDatos(" + (index+1) + ")\"  class='page-link' href='#'>" + (index+1) + "</a></li>" +
                 "<li class='page-item'><a onclick=\"CargarDatos(" + (index + 2) + ")\"  class='page-link' href='#'>" + (index + 2) + "</a></li>" +
                 "<li class='page-item'><a onclick=\"CargarDatos(" + (index + 3) + ")\"  class='page-link' href='#'>" + (index + 3) + "</a></li>" +
-                "<li class='page-item'><a onclick=\"tcambio(1)\" class='page-link' href='#'>Next</a></li></ul>";;
+                "<li class='page-item'><a onclick=\"tcambio(1)\" class='page-link' href='#'>Next</a></li></ul>";
                 index = index + 3;
                 console.log("index sumado", index)
         }
     } else {
-
+           
             pagic = pagic - 30;
             console.log("paginas restadas ", pagic)
             
-            n += "<ul class='pagination'><li class='page-item'><a  class='page-link' href='#'>Previous</a></li>" +
+            n += "<ul class='pagination'><li class='page-item'><a onclick=\"tcambio(-1)\"   class='page-link' href='#'>Previous</a></li>" +
                 "<li class='page-item'><a onclick=\"CargarDatos(" + (index - 5) + ")\"  class='page-link' href='#'>" + (index - 5) + "</a></li>" +
                 "<li class='page-item'><a onclick=\"CargarDatos(" + (index - 4) + ")\"  class='page-link' href='#'>" + (index - 4) + "</a></li>" +
                 "<li class='page-item'><a onclick=\"CargarDatos(" + (index - 3) + ")\"  class='page-link' href='#'>" + (index - 3) + "</a></li>" +
-                "<li class='page-item'><a id='siguiente' onclick=\"tcambio(1)\" class='page-link' href='#'>Next</a></li></ul>";;
+                "<li class='page-item'><a id='siguiente' onclick=\"tcambio(1)\" class='page-link' href='#'>Next</a></li></ul>";
 
             index = index-3;
             console.log("index restado", index)
@@ -90,7 +83,10 @@ function tcambio(num) {
             "<li class='page-item'><a onclick=\"CargarDatos(" + (index - 1) + ")\"  class='page-link' href='#'>" + (index - 1) + "</a></li>" +
             "<li class='page-item'><a onclick=\"CargarDatos(" + (index) + ")\"  class='page-link' href='#'>" + (index) + "</a></li>" +
             "<li class='page-item '><a id='siguiente' onclick=\"tcambio(1)\" class='page-link' href='#'>Next</a></li></ul>";
+            }else{
+                CargarDatos((index));
             } 
+            
         
 
     }
