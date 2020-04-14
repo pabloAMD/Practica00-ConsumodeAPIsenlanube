@@ -1,7 +1,9 @@
 # Practica00-ConsumodeAPIsenlanube
 
 ### Identificar gráficamente la arquitectura y el patrón de diseño de la aplicación a desarrollar
+![image](https://user-images.githubusercontent.com/33675679/79187461-e87f6c80-7de1-11ea-8f65-d88de27d2da9.png)
 
+El modelo de arquitectura de nuestra aplicación, esta centrada en un cliente servidor el cual esta explicado el proceso en la imagen.
 
 ### Generar una llave para consumir los servicios web de la API de OMDb.
 ![image](https://user-images.githubusercontent.com/33675679/79171906-da692600-7db8-11ea-87fc-4d0bd7b5987a.png)
